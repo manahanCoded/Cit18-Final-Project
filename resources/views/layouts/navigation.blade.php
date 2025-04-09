@@ -12,16 +12,21 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Home') }}
-                    </x-nav-link>
+                <x-nav-link :href="route('appointments.index')" :active="request()->routeIs('appointments.*')">
+    {{ __('Appointments') }}
+</x-nav-link>
                     <x-nav-link :href="route('tasks.index')" :active="request()->routeIs('tasks.*')">
                         {{ __('Tasks') }}
                     </x-nav-link>
                 </div>
             </div>
 
-            <div class=" sm:flex sm:items-center sm:ml-6" x-data="{ open: false }">
+            <div class=" sm:flex sm:items-center gap-10 sm:ml-6" x-data="{ open: false }">
+            <div class="hidden md:flex items-center space-x-1">
+                    <a href="{{ route('home') }}" class="py-4 px-2 text-blue-500 border-b-4 border-blue-500 font-semibold">Home</a>
+                    <a href="{{ route('about') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">About</a>
+                    <a href="{{ route('services') }}" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Services</a>
+</div>
     <!-- Dropdown Trigger (Button) -->
     <button @click="open = !open" class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700">
         @auth
@@ -35,6 +40,7 @@
     </button>
 
     <!-- Dropdown menu - only visible when open is true -->
+
     <div x-show="open" @click.away="open = false" x-transition
          class="absolute right-40 top-15 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
         <div class="py-1">
@@ -56,6 +62,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="md:hidden block">
         <div class="pt-2 pb-3 space-y-1">
+            
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Home') }}
             </x-responsive-nav-link>

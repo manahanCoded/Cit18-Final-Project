@@ -25,4 +25,7 @@ class AppServiceProvider extends ServiceProvider
         // Register the Task policy
         Gate::policy(Task::class, TaskPolicy::class);
     }
+    protected $policies = [
+        Appointment::class => AppointmentPolicy::class,
+    ];
 }
